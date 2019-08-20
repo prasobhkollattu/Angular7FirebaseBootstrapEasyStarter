@@ -1,0 +1,19 @@
+<div class="row">
+  <div style="width:300px;">
+    <product-filter [selectedCategory]="selectedCategory"></product-filter>
+  </div>
+  <div class="col col-mid-10">
+    <div class="row">
+      <ng-container
+        class="col-mid-2"
+        *ngFor="let product of filteredProducts; let i = index"
+      >
+        <product-card
+          [product]="product"
+          style="width:300px;height:450px;margin:30px;"
+          [shoppingCart]="cart"
+        ></product-card>
+      </ng-container>
+    </div>
+  </div>
+</div>

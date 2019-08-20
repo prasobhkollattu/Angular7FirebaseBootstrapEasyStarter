@@ -1,0 +1,75 @@
+<h1>Shopping cart</h1>
+<div class="row col-10">
+  <p>
+    You have {{ getItemstotalCount() }} items in your shopping cart
+    <button
+      *ngIf="cart.items"
+      (click)="clearCart()"
+      class="btn btn-light btn-sm"
+      [disabled]="cart.getItemstotalCount() == 0 ? true : false"
+    >
+      Clear shoppping cart
+    </button>
+  </p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th style="width:230px;">Quantity</th>
+        <th class="text-right" style="width:200px;">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cartItem of cart.items">
+        <td *ngIf="cartItem.quantity > 0">
+          <img
+            style="height:100px"
+            class="rounded-0"
+            [src]="cartItem.product.imageUrl"
+          />
+        </td>
+        <td class="align-middle" *ngIf="cartItem.quantity > 0">
+          {{ cartItem.product.title }}
+        </td>
+        <td class="align-middle" *ngIf="cartItem.quantity > 0">
+          <product-quantity [product]="cartItem.product" [shoppingCart]="cart">
+          </product-quantity>
+        </td>
+        <td class="align-middle text-right" *ngIf="cartItem.quantity > 0">
+          {{
+            cartItem.product.price * cartItem.quantity | currency: "USD":true
+          }}
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="align-middle" class="text-right">
+          {{ cart.totalPrice | currency: "USD":true }}
+        </th>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="align-middle" class="text-right">
+          <button
+            type="button"
+            class="text-right"
+            (click)="clearCart()"
+            routerLink="/check-out"
+            [disabled]="cart.getItemstotalCount() > 0 ? false : true"
+            class="btn btn-primary"
+          >
+            Check Out
+          </button>
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
