@@ -1,3 +1,4 @@
+import { AuthService } from "./../service/auth.service";
 import { CartItem } from "./../models/cart-item.model";
 import { ShoppingCart } from "./../models/shopping-cart.model";
 import { ShoppingCartService } from "./../service/shopping-cart.service";
@@ -10,7 +11,10 @@ import { Component, OnInit } from "@angular/core";
 })
 export class ShppingCartComponent implements OnInit {
   cart: ShoppingCart;
-  constructor(private cartService: ShoppingCartService) {}
+  constructor(
+    private cartService: ShoppingCartService,
+    public authService: AuthService
+  ) {}
 
   ngOnInit() {
     this.cartService.getCart().subscribe((items: CartItem[]) => {

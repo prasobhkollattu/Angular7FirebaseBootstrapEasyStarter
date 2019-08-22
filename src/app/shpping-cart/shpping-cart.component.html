@@ -3,7 +3,7 @@
   <p>
     You have {{ getItemstotalCount() }} items in your shopping cart
     <button
-      *ngIf="cart.items"
+      *ngIf="cart && cart.items"
       (click)="clearCart()"
       class="btn btn-light btn-sm"
       [disabled]="cart.getItemstotalCount() == 0 ? true : false"
@@ -21,7 +21,7 @@
         <th class="text-right" style="width:200px;">Total</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="cart && cart.items">
       <tr *ngFor="let cartItem of cart.items">
         <td *ngIf="cartItem.quantity > 0">
           <img
@@ -44,7 +44,7 @@
         </td>
       </tr>
     </tbody>
-    <tfoot>
+    <tfoot *ngIf="cart && cart.items">
       <tr>
         <th></th>
         <th></th>
@@ -61,7 +61,7 @@
           <button
             type="button"
             class="text-right"
-            (click)="clearCart()"
+            (click)="authService.user ? clearCart() : ''"
             routerLink="/check-out"
             [disabled]="cart.getItemstotalCount() > 0 ? false : true"
             class="btn btn-primary"
