@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     this.authService.loginUser();
-    if (!this.redirectIfRequired()) {
+    if (this.redirectIfRequired()) {
       this.router.navigate(["/"]);
     }
   }
   loginAdmin() {
     this.authService.loginAdmin();
-    if (!this.redirectIfRequired()) {
+    if (this.redirectIfRequired()) {
       this.router.navigate(["/"]);
     }
   }

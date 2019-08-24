@@ -1,17 +1,35 @@
-<div class="text-center" style="margin-top: 30%;">
-  <button (click)="loginUser()" class="btn btn-primary btn-lg ">
-    Login as normal user
-  </button>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div
+        class="text-center d-flex align-items-center justify-content-center"
+        style="min-height: 80vh;"
+      >
+        <button
+          (click)="loginUser()"
+          class="btn btn-outline-primary btn-lg m-5 align-self-center"
+        >
+          Login as normal user
+        </button>
 
-  <button (click)="loginAdmin()" class="btn btn-danger btn-lg">
-    Login as admin user
-  </button>
-
-  <p class="footertext" style="margin-top: 20%;">
-    Developed by Prasobh Kollattu
-    <a
-      href="https://github.com/prasobhkollattu/Angular7FirebaseBootstrapEasyStarter"
-      >Git : Angular7FirebaseBootstrapEasyStarter</a
-    >
-  </p>
+        <button
+          (click)="loginAdmin()"
+          class="btn btn-outline-danger btn-lg align-self-center"
+        >
+          Login as admin user
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <p class="footertext">
+        Developed by Prasobh Kollattu
+        <a
+          href="https://github.com/prasobhkollattu/Angular7FirebaseBootstrapEasyStarter"
+          >Git : Angular7FirebaseBootstrapEasyStarter</a
+        >
+      </p>
+    </div>
+  </div>
 </div>
